@@ -18,4 +18,11 @@ extension EmailValidation on String {
 
     return usernameRegex.hasMatch(this);
   }
+  bool isValidPhoneNumber() {
+    final usernameRegex = RegExp(
+      r'^09\d{9}$',
+    );
+
+    return usernameRegex.hasMatch(this);
+  }
 }

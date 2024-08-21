@@ -1,8 +1,11 @@
 import 'dart:ui';
 
 import 'package:dio/dio.dart';
+import 'package:flutter/foundation.dart';
 
 part 'default_interceptor.dart';
+
+part 'log_interceptor.dart';
 
 typedef TokenProvider = String? Function();
 typedef BaseUrlProvider = String Function();
@@ -21,12 +24,14 @@ class Request {
     this.unAuthorizedHandler,
     this.onTokenChanged,
   }) {
-    _dio.interceptors.add(
-      DefaultInterceptor(
-        findToken: token,
-        unAuthorizedHandler: unAuthorizedHandler,
-      ),
-    );
+    _dio.interceptors
+      ..add(
+        DefaultInterceptor(
+          findToken: token,
+          unAuthorizedHandler: unAuthorizedHandler,
+        ),
+      )
+      ..add(const LogInterceptor());
   }
 
   Future<Response> get(

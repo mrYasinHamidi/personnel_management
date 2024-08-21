@@ -12,6 +12,8 @@ class SignupController extends GetxController {
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
   final TextEditingController passwordConfirmController = TextEditingController();
+  final TextEditingController phoneController = TextEditingController();
+  final TextEditingController nameController = TextEditingController();
 
   void submit() async {
     if (!formKey.currentState!.validate()) return;
@@ -19,6 +21,9 @@ class SignupController extends GetxController {
       SignupParam(
         email: emailController.text.trim(),
         password: passwordController.text.trim(),
+        passwordConfirm: passwordConfirmController.text.trim(),
+        name: nameController.text.trim(),
+        phone: phoneController.text.trim(),
       ),
     );
     res.fold(
