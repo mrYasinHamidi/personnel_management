@@ -12,9 +12,5 @@ class SaveTokenUseCase extends UseCase<void, TokenEntity> {
   const SaveTokenUseCase({required this.repository});
 
   @override
-  FutureOr<Either<Failure, void>> call(TokenEntity param) {
-    return perform(
-      () => repository.saveToken(param),
-    );
-  }
+  FutureOr<Either<Failure, void>> call(TokenEntity param) => repository.saveToken(param);
 }

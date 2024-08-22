@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_state_manager/get_state_manager.dart';
+import 'package:personnel_management/common/extensions/string_ext.dart';
 import 'package:personnel_management/parts/auth/presentation/manager/login_controller.dart';
 
 class LoginPage extends GetView<LoginController> {
@@ -9,25 +9,34 @@ class LoginPage extends GetView<LoginController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Form(
-        key: controller.formKey,
-        child: Column(
-          children: [
-            TextFormField(
-              controller: controller.usernameController,
+      body: SafeArea(
+        child: Form(
+          key: controller.formKey,
+          child: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Column(
+              children: [
+                TextFormField(
+                  controller: controller.emailController,
+                  validator: (value) => value?.isValidEmail() ?? false ? null : 'emailValidationError'.tr,
+                  decoration: InputDecoration(labelText: 'email'.tr),
+                ),
+                TextFormField(
+                  controller: controller.passwordController,
+                  validator: (value) => value?.isValidPassword() ?? false ? null : 'passwordValidationError'.tr,
+                  decoration: InputDecoration(labelText: 'password'.tr),
+                ),
+                ElevatedButton(
+                  onPressed: controller.submit,
+                  child: Text('login'.tr),
+                ),
+                ElevatedButton(
+                  onPressed: controller.openSignupPage,
+                  child: Text('signup'.tr),
+                ),
+              ],
             ),
-            TextFormField(
-              controller: controller.passwordController,
-            ),
-            ElevatedButton(
-              onPressed: controller.submit,
-              child: Text('login'.tr),
-            ),
-            ElevatedButton(
-              onPressed: controller.openSignupPage,
-              child: Text('signup'.tr),
-            ),
-          ],
+          ),
         ),
       ),
     );

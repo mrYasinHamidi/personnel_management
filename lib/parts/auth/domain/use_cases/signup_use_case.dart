@@ -12,9 +12,5 @@ class SignupUseCase extends UseCase<void, SignupParam> {
   const SignupUseCase({required this.repository});
 
   @override
-  FutureOr<Either<Failure, void>> call(SignupParam param) {
-    return perform(
-      () => repository.register(param),
-    );
-  }
+  FutureOr<Either<Failure, void>> call(SignupParam param) => repository.register(param);
 }

@@ -11,13 +11,13 @@ class LoginController extends GetxController {
   final _saveToken = Get.find<SaveTokenUseCase>();
 
   final formKey = GlobalKey<FormState>();
-  final usernameController = TextEditingController();
+  final emailController = TextEditingController();
   final passwordController = TextEditingController();
 
   void submit() async {
     if (!formKey.currentState!.validate()) return;
     final param = LoginParam(
-      username: usernameController.text.trim(),
+      email: emailController.text.trim(),
       password: passwordController.text.trim(),
     );
     final res = await _login.call(param);

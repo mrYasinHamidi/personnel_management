@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:get/get_state_manager/get_state_manager.dart';
+import 'package:get/get.dart';
+import 'package:personnel_management/main.dart';
 import 'package:personnel_management/parts/showcase/presentation/manager/showcase_controller.dart';
 
 class ShowcasePage extends GetView<ShowcaseController> {
@@ -7,6 +8,13 @@ class ShowcasePage extends GetView<ShowcaseController> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold();
+    return Scaffold(
+      body: Center(
+        child: ElevatedButton(
+          onPressed: Setup.logout,
+          child: Text('logout'.tr),
+        ),
+      ),
+    );
   }
 }

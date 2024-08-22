@@ -16,27 +16,27 @@ class AppRouter {
   static List<GetPage> pages = [
     GetPage(
       name: RoutesName.splash,
-      page: () => SplashPage(),
+      page: () => const SplashPage(),
       binding: SplashBindings(),
     ),
     GetPage(
       name: RoutesName.login,
-      page: () => LoginPage(),
+      page: () => const LoginPage(),
       binding: LoginBindings(),
     ),
     GetPage(
       name: RoutesName.signup,
-      page: () => SignupPage(),
+      page: () => const SignupPage(),
       binding: SignupBindings(),
     ),
     GetPage(
       name: RoutesName.forgetPassword,
-      page: () => ForgetPasswordPage(),
+      page: () => const ForgetPasswordPage(),
       binding: ForgetPasswordBindings(),
     ),
     GetPage(
       name: RoutesName.showcase,
-      page: () => ShowcasePage(),
+      page: () => const ShowcasePage(),
       binding: ShowcaseBindings(),
     ),
   ];

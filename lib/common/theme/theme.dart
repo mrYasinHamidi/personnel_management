@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 abstract class MovieTheme {
   abstract Brightness brightness;
 
-  final InputDecorationTheme inputDecorationTheme = InputDecorationTheme(
+  final InputDecorationTheme inputDecorationTheme = const InputDecorationTheme(
     border: OutlineInputBorder(),
   );
 }

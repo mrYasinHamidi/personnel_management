@@ -13,9 +13,5 @@ class LoginUseCase extends UseCase<TokenEntity, LoginParam> {
   const LoginUseCase({required this.repository});
 
   @override
-  FutureOr<Either<Failure, TokenEntity>> call(LoginParam param) {
-    return perform(
-      () => repository.login(param),
-    );
-  }
+  FutureOr<Either<Failure, TokenEntity>> call(LoginParam param) => repository.login(param);
 }

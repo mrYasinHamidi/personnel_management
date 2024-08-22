@@ -10,9 +10,5 @@ class GetTokenUseCase extends NoParamUseCase<TokenEntity> {
   const GetTokenUseCase({required this.repository});
 
   @override
-  Either<Failure, TokenEntity> call() {
-    return performSync(
-      () => repository.getSavedToken(),
-    );
-  }
+  Either<Failure, TokenEntity> call() => repository.getSavedToken();
 }

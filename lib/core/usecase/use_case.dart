@@ -1,32 +1,11 @@
 import 'dart:async';
 
 import 'package:dartz/dartz.dart';
-import 'package:flutter/foundation.dart';
 
 import '../error/error.dart';
 
 abstract class BaseUseCase<Type> {
   const BaseUseCase();
-
-  Future<Either<Failure, T>> perform<T>(Future<T> Function() func) async {
-    try {
-      return Right(await func());
-    } catch (e, s) {
-      debugPrint(e.toString());
-      debugPrint(s.toString());
-      return Left(Failure(e));
-    }
-  }
-
-  Either<Failure, T> performSync<T>(T Function() func) {
-    try {
-      return Right(func());
-    } catch (e, s) {
-      debugPrint(e.toString());
-      debugPrint(s.toString());
-      return Left(Failure(e));
-    }
-  }
 }
 
 abstract class UseCase<Type, Params> extends BaseUseCase<Type> {

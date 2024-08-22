@@ -4,11 +4,15 @@ part 'login_param.g.dart';
 
 @JsonSerializable()
 class LoginParam {
-  final String username;
+
+  @JsonKey(name: 'email')
+  final String email;
+
+  @JsonKey(name: 'password')
   final String password;
 
   const LoginParam({
-    required this.username,
+    required this.email,
     required this.password,
   });
 
