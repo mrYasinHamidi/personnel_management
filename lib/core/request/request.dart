@@ -1,4 +1,3 @@
-
 import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
 
@@ -8,30 +7,31 @@ part 'log_interceptor.dart';
 
 typedef TokenProvider = String? Function();
 typedef BaseUrlProvider = String Function();
-typedef TokenChanged = String Function(String refreshToken, String accessToken);
+typedef UnAuthorizedHandler = Future<void> Function();
 
 class Request {
   final Dio _dio = Dio();
-  final TokenProvider token;
   final BaseUrlProvider baseUrl;
-  final VoidCallback? unAuthorizedHandler;
-  final TokenChanged? onTokenChanged;
+
+  TokenProvider? _tokenProvider;
+  UnAuthorizedHandler? _unAuthorizedHandler;
 
   Request({
-    required this.token,
     required this.baseUrl,
-    this.unAuthorizedHandler,
-    this.onTokenChanged,
   }) {
     _dio.interceptors
       ..add(
         DefaultInterceptor(
-          findToken: token,
-          unAuthorizedHandler: unAuthorizedHandler,
+          findToken: () => _tokenProvider?.call(),
+          unAuthorizedHandler: () => _unAuthorizedHandler?.call(),
         ),
       )
       ..add(const LogInterceptor());
   }
+
+  setTokenProvider(TokenProvider tokenProvider) => _tokenProvider = tokenProvider;
+
+  setUnAuthorizedHandler(VoidCallback unAuthorizedHandler) => _unAuthorizedHandler = unAuthorizedHandler;
 
   Future<Response> get(
     String path, {
