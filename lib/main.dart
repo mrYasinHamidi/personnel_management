@@ -4,7 +4,6 @@ import 'package:hive_flutter/hive_flutter.dart';
 import 'package:personnel_management/common/app_bindings.dart';
 import 'package:personnel_management/common/app_router.dart';
 import 'package:personnel_management/parts/auth/data/data_sources/local/auth_local_datasource_impl.dart';
-import 'package:personnel_management/parts/auth/data/repositories/auth_repository_impl.dart';
 
 import 'app.dart';
 

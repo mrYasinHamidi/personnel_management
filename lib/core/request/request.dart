@@ -31,7 +31,7 @@ class Request {
 
   setTokenProvider(TokenProvider tokenProvider) => _tokenProvider = tokenProvider;
 
-  setUnAuthorizedHandler(VoidCallback unAuthorizedHandler) => _unAuthorizedHandler = unAuthorizedHandler;
+  setUnAuthorizedHandler(UnAuthorizedHandler unAuthorizedHandler) => _unAuthorizedHandler = unAuthorizedHandler;
 
   Future<Response> get(
     String path, {

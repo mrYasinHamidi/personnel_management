@@ -5,8 +5,8 @@ import 'package:personnel_management/parts/auth/presentation/pages/login/login_b
 import 'package:personnel_management/parts/auth/presentation/pages/login/login_page.dart';
 import 'package:personnel_management/parts/auth/presentation/pages/signup/signup_bindings.dart';
 import 'package:personnel_management/parts/auth/presentation/pages/signup/signup_page.dart';
-import 'package:personnel_management/parts/showcase/presentation/pages/showcase/showcase_bindings.dart';
-import 'package:personnel_management/parts/showcase/presentation/pages/showcase/showcase_page.dart';
+import 'package:personnel_management/parts/home/presentation/pages/showcase/home_bindings.dart';
+import 'package:personnel_management/parts/home/presentation/pages/showcase/home_page.dart';
 import 'package:personnel_management/parts/splash/presentation/pages/splash/splash_bindings.dart';
 import 'package:personnel_management/parts/splash/presentation/pages/splash/splash_page.dart';
 
@@ -35,9 +35,9 @@ class AppRouter {
       binding: ForgetPasswordBindings(),
     ),
     GetPage(
-      name: RoutesName.showcase,
-      page: () => const ShowcasePage(),
-      binding: ShowcaseBindings(),
+      name: RoutesName.home,
+      page: () => const HomePage(),
+      binding: HomeBindings(),
     ),
   ];
 }
@@ -47,5 +47,5 @@ class RoutesName {
   static const String login = '/login';
   static const String signup = '/signup';
   static const String forgetPassword = '/forgetPassword';
-  static const String showcase = '/showcase';
+  static const String home = '/home';
 }

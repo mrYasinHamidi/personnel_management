@@ -25,7 +25,7 @@ class LoginController extends GetxController {
       (l) => Toast.showError(l.message),
       (r) async {
         await _saveToken.call(r);
-        Get.offNamed(RoutesName.showcase);
+        Get.offNamed(RoutesName.home);
       },
     );
   }

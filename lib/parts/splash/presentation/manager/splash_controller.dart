@@ -16,7 +16,7 @@ class SplashController extends GetxController {
             Get.offNamed(RoutesName.login);
           },
           (r) {
-            Get.offNamed(RoutesName.showcase);
+            Get.offNamed(RoutesName.home);
           },
         );
       },

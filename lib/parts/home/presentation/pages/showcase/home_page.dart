@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:personnel_management/main.dart';
-import 'package:personnel_management/parts/showcase/presentation/manager/showcase_controller.dart';
+import 'package:personnel_management/parts/home/presentation/manager/home_controller.dart';
 
-class ShowcasePage extends GetView<ShowcaseController> {
-  const ShowcasePage({super.key});
+class HomePage extends GetView<HomeController> {
+  const HomePage({super.key});
 
   @override
   Widget build(BuildContext context) {
