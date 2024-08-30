@@ -31,12 +31,12 @@ class SignupController extends GetxController {
         Toast.showError(l.error.toString());
       },
       (r) {
-        Get.offNamed(RoutesName.login);
+        Get.offNamed(RoutesName.loginManager);
       },
     );
   }
 
   void openLoginPage() async {
-    Get.offNamed(RoutesName.login);
+    Get.offNamed(RoutesName.loginManager);
   }
 }

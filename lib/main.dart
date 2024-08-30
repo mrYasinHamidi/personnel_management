@@ -21,6 +21,6 @@ class Setup {
 
   static void logout() async {
     Get.find<AuthLocalDataSourceImpl>().clear();
-    Get.offAllNamed(RoutesName.login);
+    Get.offAllNamed(RoutesName.loginManager);
   }
 }

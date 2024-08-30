@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:personnel_management/common/extensions/string_ext.dart';
-import 'package:personnel_management/parts/auth/presentation/manager/login_controller.dart';
+import 'package:personnel_management/parts/auth/presentation/manager/login_personnel_controller.dart';
 
-class LoginPage extends GetView<LoginController> {
-  const LoginPage({super.key});
+class LoginPersonnelPage extends GetView<LoginPersonnelController> {
+  const LoginPersonnelPage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -33,6 +33,10 @@ class LoginPage extends GetView<LoginController> {
                 ElevatedButton(
                   onPressed: controller.openSignupPage,
                   child: Text('signup'.tr),
+                ),
+                ElevatedButton(
+                  onPressed: controller.openLoginManagerPage,
+                  child: Text('loginManager'.tr),
                 ),
               ],
             ),

@@ -6,7 +6,7 @@ import 'package:personnel_management/parts/auth/domain/params/login_param.dart';
 import 'package:personnel_management/parts/auth/domain/use_cases/login_use_case.dart';
 import 'package:personnel_management/parts/auth/domain/use_cases/save_token_use_case.dart';
 
-class LoginController extends GetxController {
+class LoginPersonnelController extends GetxController {
   final _login = Get.find<LoginUseCase>();
   final _saveToken = Get.find<SaveTokenUseCase>();
 
@@ -32,5 +32,9 @@ class LoginController extends GetxController {
 
   void openSignupPage() {
     Get.offNamed(RoutesName.signup);
+  }
+
+  void openLoginManagerPage() {
+    Get.offNamed(RoutesName.loginManager);
   }
 }

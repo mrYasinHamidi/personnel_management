@@ -2,9 +2,9 @@ import 'package:get/instance_manager.dart';
 import 'package:personnel_management/parts/auth/data/repositories/auth_repository_impl.dart';
 import 'package:personnel_management/parts/auth/domain/use_cases/login_use_case.dart';
 import 'package:personnel_management/parts/auth/domain/use_cases/save_token_use_case.dart';
-import 'package:personnel_management/parts/auth/presentation/manager/login_controller.dart';
+import 'package:personnel_management/parts/auth/presentation/manager/login_manager_controller.dart';
 
-class LoginBindings extends Bindings {
+class LoginPersonnelBindings extends Bindings {
   @override
   void dependencies() {
     Get.put(
@@ -17,6 +17,6 @@ class LoginBindings extends Bindings {
         repository: Get.find<AuthRepositoryImpl>(),
       ),
     );
-    Get.put(LoginController());
+    Get.put(LoginManagerController());
   }
 }

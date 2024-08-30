@@ -23,7 +23,15 @@ class HomePage extends GetView<HomeController> {
               ),
               controller.obx(
                 (state) {
-                  return Text(state.toString());
+                  return Column(
+                    children: [
+                      Text(state.toString()),
+                      ElevatedButton(
+                        onPressed: controller.openCreatePersonnelPage,
+                        child: Text('createPersonnel'.tr),
+                      ),
+                    ],
+                  );
                 },
                 onError: (error) => Text(error ?? ''),
                 onLoading: const CircularProgressIndicator(),

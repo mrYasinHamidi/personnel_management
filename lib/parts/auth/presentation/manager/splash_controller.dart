@@ -13,7 +13,7 @@ class SplashController extends GetxController {
       () {
         Get.find<GetTokenUseCase>().call().fold(
           (l) {
-            Get.offNamed(RoutesName.login);
+            Get.offNamed(RoutesName.loginManager);
           },
           (r) {
             Get.offNamed(RoutesName.home);

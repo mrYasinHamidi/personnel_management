@@ -21,6 +21,7 @@ dependencies:
   json_annotation: ^4.9.0
   hive_flutter: ^1.1.0
   uni_links: ^0.5.1
+  persian_datetime_picker: ^2.7.0
 
 dev_dependencies:
   flutter_test:
