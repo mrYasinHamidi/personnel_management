@@ -6,7 +6,6 @@ import 'package:personnel_management/parts/home/presentation/manager/home_contro
 class HomePage extends GetView<HomeController> {
   const HomePage({super.key});
 
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -22,9 +21,13 @@ class HomePage extends GetView<HomeController> {
                 onPressed: controller.getHomeData,
                 child: Text('getdata'.tr),
               ),
-              Obx((){
-                return Text(controller.homeData.toString());
-              })
+              controller.obx(
+                (state) {
+                  return Text(state.toString());
+                },
+                onError: (error) => Text(error ?? ''),
+                onLoading: const CircularProgressIndicator(),
+              ),
             ],
           ),
         ),
