@@ -1,17 +1,27 @@
 import 'package:get/get.dart';
-import 'package:get/get_state_manager/get_state_manager.dart';
-import 'package:personnel_management/common/entities/user_entity.dart';
-import 'package:personnel_management/common/tools/toast.dart';
-import 'package:personnel_management/parts/home/domain/repository/home_repository.dart';
+import 'package:personnel_management/common/response_state.dart';
+import 'package:personnel_management/parts/home/domain/entities/home_data_entity.dart';
+import 'package:personnel_management/parts/home/domain/usecases/get_users_usecase.dart';
 
 class HomeController extends GetxController {
-  final HomeRepository repository;
-  final users = <UserEntity>[].obs;
+  final GetHomeDataUseCase getHomeDataUseCase;
 
-  HomeController(this.repository);
+  HomeController(this.getHomeDataUseCase);
 
-  getUsers() async {
-    final res = await repository.getUsers();
-    res.fold((l) => Toast.showError(l.message), (r) =>null);
+  final homeData = ResponseState<HomeDataEntity>.loading().obs;
+
+
+  getHomeData() async {
+    homeData.value = ResponseState.loading();
+
+    getHomeDataUseCase.call().then((res) {
+      res.fold((l) {
+        homeData.value = ResponseState.error(l.message);
+      }, (r) {
+        homeData.value = ResponseState.success(r);
+      });
+    }).catchError((error) {
+      homeData.value = ResponseState.error(error);
+    });
   }
 }

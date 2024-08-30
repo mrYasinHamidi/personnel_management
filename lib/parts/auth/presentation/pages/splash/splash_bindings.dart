@@ -3,7 +3,7 @@ import 'package:personnel_management/parts/auth/data/data_sources/local/auth_loc
 import 'package:personnel_management/parts/auth/data/data_sources/remote/auth_remote_data_source_impl.dart';
 import 'package:personnel_management/parts/auth/data/repositories/auth_repository_impl.dart';
 import 'package:personnel_management/parts/auth/domain/use_cases/get_token_use_case.dart';
-import 'package:personnel_management/parts/splash/presentation/manager/splash_controller.dart';
+import 'package:personnel_management/parts/auth/presentation/manager/splash_controller.dart';
 
 class SplashBindings extends Bindings {
   @override

@@ -21,7 +21,7 @@ class DefaultInterceptor extends Interceptor {
       );
     }
 
-    options.headers['token'] = 'Bearer ${findToken.call()}';
+    options.headers['authorization'] = 'Bearer ${findToken.call()}';
     super.onRequest(options, handler);
   }
 

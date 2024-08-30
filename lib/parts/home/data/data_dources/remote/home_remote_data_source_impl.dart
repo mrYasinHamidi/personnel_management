@@ -6,8 +6,8 @@ class HomeRemoteDataSourceImpl extends HomeRemoteDataSource {
   const HomeRemoteDataSourceImpl({required super.request});
 
   @override
-  Future<ResponseModel> getUsers() async {
-    final res = await request.get(HomeEndpoints.users);
+  Future<ResponseModel> getHomeData() async {
+    final res = await request.get(HomeEndpoints.dashboard);
     return ResponseModel.fromJson(res.data);
   }
 }

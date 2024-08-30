@@ -6,13 +6,27 @@ import 'package:personnel_management/parts/home/presentation/manager/home_contro
 class HomePage extends GetView<HomeController> {
   const HomePage({super.key});
 
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
-        child: ElevatedButton(
-          onPressed: Setup.logout,
-          child: Text('logout'.tr),
+      body: SafeArea(
+        child: Center(
+          child: Column(
+            children: [
+              ElevatedButton(
+                onPressed: Setup.logout,
+                child: Text('logout'.tr),
+              ),
+              ElevatedButton(
+                onPressed: controller.getHomeData,
+                child: Text('getdata'.tr),
+              ),
+              Obx((){
+                return Text(controller.homeData.toString());
+              })
+            ],
+          ),
         ),
       ),
     );

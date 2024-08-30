@@ -5,10 +5,10 @@ import 'package:personnel_management/parts/auth/presentation/pages/login/login_b
 import 'package:personnel_management/parts/auth/presentation/pages/login/login_page.dart';
 import 'package:personnel_management/parts/auth/presentation/pages/signup/signup_bindings.dart';
 import 'package:personnel_management/parts/auth/presentation/pages/signup/signup_page.dart';
+import 'package:personnel_management/parts/auth/presentation/pages/splash/splash_bindings.dart';
+import 'package:personnel_management/parts/auth/presentation/pages/splash/splash_page.dart';
 import 'package:personnel_management/parts/home/presentation/pages/showcase/home_bindings.dart';
 import 'package:personnel_management/parts/home/presentation/pages/showcase/home_page.dart';
-import 'package:personnel_management/parts/splash/presentation/pages/splash/splash_bindings.dart';
-import 'package:personnel_management/parts/splash/presentation/pages/splash/splash_page.dart';
 
 class AppRouter {
   static const String initialRoute = RoutesName.splash;
