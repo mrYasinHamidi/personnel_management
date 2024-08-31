@@ -7,6 +7,10 @@ extension EmailValidation on String {
     return emailRegex.hasMatch(this);
   }
 
+  bool isValidName() {
+    return trim().length > 2;
+  }
+
   bool isValidPassword() {
     return length > 7;
   }
@@ -18,6 +22,7 @@ extension EmailValidation on String {
 
     return usernameRegex.hasMatch(this);
   }
+
   bool isValidPhoneNumber() {
     final usernameRegex = RegExp(
       r'^09\d{9}$',
