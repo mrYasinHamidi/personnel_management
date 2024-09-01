@@ -11,6 +11,9 @@ class CreatePersonnelPage extends GetView<CreatePersonnelController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: Text('createPersonnel'.tr),
+      ),
       body: SafeArea(
         child: Form(
           key: controller.formKey,
