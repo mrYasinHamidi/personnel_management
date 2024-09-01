@@ -5,7 +5,6 @@ sealed class UserEntity extends Equatable {
   final String id;
   final String name;
   final DateTime createdAt;
-  final String email;
   final String nationalCode;
   final UserRole role;
 
@@ -13,7 +12,6 @@ sealed class UserEntity extends Equatable {
     required this.id,
     required this.name,
     required this.createdAt,
-    required this.email,
     required this.nationalCode,
     required this.role,
   });
@@ -24,13 +22,14 @@ sealed class UserEntity extends Equatable {
 
 class ManagerEntity extends UserEntity {
   final String phone;
+  final String email;
 
   const ManagerEntity({
     required super.id,
     required super.name,
     required super.createdAt,
     required this.phone,
-    required super.email,
+    required this.email,
     required super.nationalCode,
     required super.role,
   });
@@ -47,7 +46,6 @@ class PersonnelEntity extends UserEntity {
     required super.id,
     required super.name,
     required super.createdAt,
-    required super.email,
     required super.nationalCode,
     required super.role,
     required this.workStartDate,

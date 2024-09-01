@@ -25,6 +25,8 @@ class Translator extends Translations {
           'passwordConfirmation': 'Password Confirmation',
           'fullName': 'Full Name',
           'errorMessage': 'Something went wrong please try again later',
+          'itsDone':' Its Done',
+          'operationDoneSuccessfully':'Operation done successfully',
         },
         'fa_FA': {
           'signup': 'ثبت نام',
@@ -41,6 +43,8 @@ class Translator extends Translations {
           'passwordConfirmation': 'تکرار کلمه عبور',
           'fullName': 'نام و نام خوانوادگی',
           'errorMessage': 'متاسفانه مشکلی پیش آمده.لطفا لحضاتی دیگر محدد تلاش کنید',
+          'itsDone':' انجام شد',
+          'operationDoneSuccessfully':'عملیات با موفقیت انجام شد',
         },
       };
 }

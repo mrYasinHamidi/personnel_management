@@ -12,7 +12,7 @@ import 'package:personnel_management/parts/auth/presentation/pages/splash/splash
 import 'package:personnel_management/parts/home/presentation/pages/showcase/home_bindings.dart';
 import 'package:personnel_management/parts/home/presentation/pages/showcase/home_page.dart';
 import 'package:personnel_management/parts/user/presentation/pages/create_personnel/bindings.dart';
-import 'package:personnel_management/parts/user/presentation/pages/create_personnel/page.dart';
+import 'package:personnel_management/parts/user/presentation/pages/create_personnel/create_personnel_pagee.dart';
 
 class AppRouter {
   static const String initialRoute = RoutesName.splash;
@@ -50,7 +50,7 @@ class AppRouter {
     ),
     GetPage(
       name: RoutesName.createPersonnel,
-      page: () => const CreatePersonnelPage(),
+      page: () => const CreatePersonnelPagee(),
       binding: CreatePersonnelBindings(),
     ),
   ];

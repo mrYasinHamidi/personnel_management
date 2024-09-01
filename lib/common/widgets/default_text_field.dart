@@ -26,6 +26,7 @@ class DefaultTextField extends StatelessWidget {
         labelText: label,
         enabled: enable ?? true,
       ),
+      controller: controller,
       keyboardType: inputType,
       validator: validator,
       onTap: onTap,

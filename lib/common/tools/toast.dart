@@ -9,4 +9,8 @@ class Toast {
       backgroundColor: Colors.red,
     );
   }
+
+  static void showSuccessMessage() {
+    Get.snackbar('itsDone'.tr, 'operationDoneSuccessfully'.tr);
+  }
 }

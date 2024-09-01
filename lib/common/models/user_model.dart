@@ -25,8 +25,6 @@ class PersonnelModel extends Equatable {
   @JsonKey(name: 'createdAt')
   final DateTime createdAt;
 
-  @JsonKey(name: 'email')
-  final String email;
 
   @JsonKey(name: 'nationalCode')
   final String nationalCode;
@@ -47,7 +45,6 @@ class PersonnelModel extends Equatable {
     required this.managerId,
     required this.personnelCode,
     required this.createdAt,
-    required this.email,
     required this.nationalCode,
     required this.role,
     required this.workStartDate,
@@ -63,7 +60,6 @@ class PersonnelModel extends Equatable {
       id: id,
       name: name,
       createdAt: createdAt,
-      email: email,
       nationalCode: nationalCode,
       role: role,
       workStartDate: workStartDate,
