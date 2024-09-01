@@ -25,12 +25,8 @@ class PersonnelModel extends Equatable {
   @JsonKey(name: 'createdAt')
   final DateTime createdAt;
 
-
   @JsonKey(name: 'nationalCode')
   final String nationalCode;
-
-  @JsonKey(name: 'role')
-  final UserRole role;
 
   @JsonKey(name: 'workStartDate')
   final DateTime workStartDate;
@@ -46,7 +42,6 @@ class PersonnelModel extends Equatable {
     required this.personnelCode,
     required this.createdAt,
     required this.nationalCode,
-    required this.role,
     required this.workStartDate,
     required this.workEndDate,
   });
@@ -61,7 +56,6 @@ class PersonnelModel extends Equatable {
       name: name,
       createdAt: createdAt,
       nationalCode: nationalCode,
-      role: role,
       workStartDate: workStartDate,
       workEndDate: workEndDate,
       username: username,
@@ -94,9 +88,6 @@ class ManagerModel extends Equatable {
   @JsonKey(name: 'nationalCode')
   final String nationalCode;
 
-  @JsonKey(name: 'role')
-  final UserRole role;
-
   const ManagerModel({
     required this.id,
     required this.name,
@@ -104,7 +95,6 @@ class ManagerModel extends Equatable {
     required this.createdAt,
     required this.email,
     required this.nationalCode,
-    required this.role,
   });
 
   factory ManagerModel.fromJson(Map<String, dynamic> json) => _$ManagerModelFromJson(json);
@@ -119,7 +109,6 @@ class ManagerModel extends Equatable {
       phone: phone,
       email: email,
       nationalCode: nationalCode,
-      role: role,
     );
   }
 

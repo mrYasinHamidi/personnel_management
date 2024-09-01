@@ -7,7 +7,7 @@ class HomeRemoteDataSourceImpl extends HomeRemoteDataSource {
 
   @override
   Future<ResponseModel> getHomeData() async {
-    final res = await request.get(HomeEndpoints.dashboard);
+    final res = await request.get(HomeEndpoints.managerDashboard);
     return ResponseModel.fromJson(res.data);
   }
 }

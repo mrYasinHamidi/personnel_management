@@ -37,6 +37,7 @@ class _DefaultDatePickerState extends State<DefaultDatePicker> {
   Widget build(BuildContext context) {
     return DefaultTextField(
       label: widget.label,
+      readOnly: true,
       controller: _textController,
       onTap: () => _onTap(context),
       validator: (value) => widget.validator?.call(widget.controller?.value),

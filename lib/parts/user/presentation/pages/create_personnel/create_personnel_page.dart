@@ -5,8 +5,8 @@ import 'package:personnel_management/common/widgets/default_date_picker.dart';
 import 'package:personnel_management/common/widgets/default_text_field.dart';
 import 'package:personnel_management/parts/user/presentation/manager/create_personnel_controller.dart';
 
-class CreatePersonnelPagee extends GetView<CreatePersonnelController> {
-  const CreatePersonnelPagee({super.key});
+class CreatePersonnelPage extends GetView<CreatePersonnelController> {
+  const CreatePersonnelPage({super.key});
 
   @override
   Widget build(BuildContext context) {

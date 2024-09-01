@@ -14,7 +14,7 @@ class HomeRepositoryImpl extends HomeRepository {
       if (res.statusCode != 200) {
         throw ServerException(res.message);
       }
-      return HomeDataModel.fromJson(res.data).toEntity();
+      return ManagerHomeDataModel.fromJson(res.data).toEntity();
     });
   }
 }

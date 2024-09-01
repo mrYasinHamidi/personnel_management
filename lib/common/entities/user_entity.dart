@@ -6,14 +6,12 @@ sealed class UserEntity extends Equatable {
   final String name;
   final DateTime createdAt;
   final String nationalCode;
-  final UserRole role;
 
   const UserEntity({
     required this.id,
     required this.name,
     required this.createdAt,
     required this.nationalCode,
-    required this.role,
   });
 
   @override
@@ -31,7 +29,6 @@ class ManagerEntity extends UserEntity {
     required this.phone,
     required this.email,
     required super.nationalCode,
-    required super.role,
   });
 }
 
@@ -47,7 +44,6 @@ class PersonnelEntity extends UserEntity {
     required super.name,
     required super.createdAt,
     required super.nationalCode,
-    required super.role,
     required this.workStartDate,
     required this.workEndDate,
     required this.username,
