@@ -61,12 +61,12 @@ class CreatePersonnelPage extends GetView<CreatePersonnelController> {
                 DefaultDatePicker(
                   controller: controller.startDateController,
                   label: 'workStartDate'.tr,
+                  counterText: 'workStartDateNotRequired'.tr,
                 ),
                 const SizedBox(height: 8),
                 DefaultDatePicker(
                   controller: controller.endDateController,
                   label: 'workEndDate'.tr,
-                  validator: (value) => value == null ? 'pleaseEnterWorkEndDate'.tr : null,
                 ),
                 const SizedBox(height: 8),
                 ElevatedButton(

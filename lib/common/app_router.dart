@@ -11,6 +11,8 @@ import 'package:personnel_management/parts/auth/presentation/pages/splash/splash
 import 'package:personnel_management/parts/auth/presentation/pages/splash/splash_page.dart';
 import 'package:personnel_management/parts/home/presentation/pages/showcase/home_bindings.dart';
 import 'package:personnel_management/parts/home/presentation/pages/showcase/home_page.dart';
+import 'package:personnel_management/parts/shift/presentation/pages/create_shift/bindings.dart';
+import 'package:personnel_management/parts/shift/presentation/pages/create_shift/create_shift_page.dart';
 import 'package:personnel_management/parts/user/presentation/pages/create_personnel/bindings.dart';
 import 'package:personnel_management/parts/user/presentation/pages/create_personnel/create_personnel_page.dart';
 
@@ -53,6 +55,11 @@ class AppRouter {
       page: () => const CreatePersonnelPage(),
       binding: CreatePersonnelBindings(),
     ),
+    GetPage(
+      name: RoutesName.createShift,
+      page: () => const CreateShiftPage(),
+      binding: CreateShiftBindings(),
+    ),
   ];
 }
 
@@ -64,4 +71,5 @@ class RoutesName {
   static const String forgetPassword = '/forgetPassword';
   static const String home = '/home';
   static const String createPersonnel = '/createPersonnel';
+  static const String createShift = '/createShift';
 }

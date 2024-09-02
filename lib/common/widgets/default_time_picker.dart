@@ -2,35 +2,37 @@ import 'package:flutter/material.dart';
 import 'package:persian_datetime_picker/persian_datetime_picker.dart';
 import 'package:personnel_management/common/widgets/default_text_field.dart';
 
-typedef DefaultDatePickerValidator = String? Function(Jalali? value);
+typedef DefaultTimePickerValidator = String? Function(TimeOfDay? value);
 
-class DefaultDatePicker extends StatefulWidget {
-  final Function(Jalali value)? onChange;
-  final DefaultDatePickerController? controller;
-  final DefaultDatePickerValidator? validator;
+class DefaultTimePicker extends StatefulWidget {
+  final Function(TimeOfDay value)? onChange;
+  final DefaultTimePickerController? controller;
+  final DefaultTimePickerValidator? validator;
   final String? label;
   final String? counterText;
+  final Widget? suffixIcon;
 
-  const DefaultDatePicker({
+  const DefaultTimePicker({
     super.key,
     this.onChange,
+    this.suffixIcon,
     this.controller,
+    this.counterText,
     this.label,
     this.validator,
-    this.counterText,
   });
 
   @override
-  State<DefaultDatePicker> createState() => _DefaultDatePickerState();
+  State<DefaultTimePicker> createState() => _DefaultTimePickerState();
 }
 
-class _DefaultDatePickerState extends State<DefaultDatePicker> {
+class _DefaultTimePickerState extends State<DefaultTimePicker> {
   final _textController = TextEditingController();
 
   @override
   void initState() {
     widget.controller?.addListener(() {
-      _textController.text = widget.controller?.value?.formatFullDate() ?? '';
+      _textController.text = widget.controller?.value?.format(context) ?? '';
     });
     super.initState();
   }
@@ -40,6 +42,7 @@ class _DefaultDatePickerState extends State<DefaultDatePicker> {
     return DefaultTextField(
       label: widget.label,
       readOnly: true,
+      suffixIcon: widget.suffixIcon,
       counterText: widget.counterText,
       controller: _textController,
       onTap: () => _onTap(context),
@@ -48,11 +51,9 @@ class _DefaultDatePickerState extends State<DefaultDatePicker> {
   }
 
   void _onTap(BuildContext context) async {
-    Jalali? picked = await showPersianDatePicker(
+    TimeOfDay? picked = await showPersianTimePicker(
       context: context,
-      initialDate: Jalali.now(),
-      firstDate: Jalali(1385, 8),
-      lastDate: Jalali(1450, 9),
+      initialTime: TimeOfDay.now(),
     );
     if (picked != null) {
       widget.onChange?.call(picked);
@@ -61,6 +62,6 @@ class _DefaultDatePickerState extends State<DefaultDatePicker> {
   }
 }
 
-class DefaultDatePickerController extends ValueNotifier<Jalali?> {
-  DefaultDatePickerController({Jalali? date}) : super(date);
+class DefaultTimePickerController extends ValueNotifier<TimeOfDay?> {
+  DefaultTimePickerController({TimeOfDay? date}) : super(date);
 }

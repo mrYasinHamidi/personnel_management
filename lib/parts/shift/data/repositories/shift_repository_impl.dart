@@ -4,7 +4,7 @@ import 'package:personnel_management/core/error/error.dart';
 import 'package:personnel_management/parts/shift/data/data_sources/remote/shift_remote_data_source.dart';
 import 'package:personnel_management/parts/shift/data/models/shift_model.dart';
 import 'package:personnel_management/parts/shift/domain/entities/shift_entity.dart';
-import 'package:personnel_management/parts/shift/domain/params/shift_param.dart';
+import 'package:personnel_management/parts/shift/domain/params/create_shift_param.dart';
 import 'package:personnel_management/parts/shift/domain/repositories/shift_repository.dart';
 
 class ShiftRepositoryImpl extends ShiftRepository {
@@ -15,9 +15,9 @@ class ShiftRepositoryImpl extends ShiftRepository {
   });
 
   @override
-  Future<Either<Failure, ShiftEntity>> sampleRequest(ShiftParam param) async {
+  Future<Either<Failure, ShiftEntity>> createShift(CreateShiftParam param) async {
     return perform(() async {
-      final response = await remoteDataSource.sampleRequest(param);
+      final response = await remoteDataSource.createShift(param);
 
       if (response.statusCode != 200) {
         throw ServerException(response.message);
