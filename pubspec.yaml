@@ -22,6 +22,7 @@ dependencies:
   hive_flutter: ^1.1.0
   uni_links: ^0.5.1
   persian_datetime_picker: ^2.7.0
+  infinite_scroll_pagination: ^4.0.0
 
 dev_dependencies:
   flutter_test:

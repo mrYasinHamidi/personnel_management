@@ -13,6 +13,8 @@ import 'package:personnel_management/parts/home/presentation/pages/showcase/home
 import 'package:personnel_management/parts/home/presentation/pages/showcase/home_page.dart';
 import 'package:personnel_management/parts/shift/presentation/pages/create_shift/bindings.dart';
 import 'package:personnel_management/parts/shift/presentation/pages/create_shift/create_shift_page.dart';
+import 'package:personnel_management/parts/shift/presentation/pages/shift_list/bindings.dart';
+import 'package:personnel_management/parts/shift/presentation/pages/shift_list/shift_list_page.dart';
 import 'package:personnel_management/parts/user/presentation/pages/create_personnel/bindings.dart';
 import 'package:personnel_management/parts/user/presentation/pages/create_personnel/create_personnel_page.dart';
 
@@ -60,6 +62,11 @@ class AppRouter {
       page: () => const CreateShiftPage(),
       binding: CreateShiftBindings(),
     ),
+    GetPage(
+      name: RoutesName.shiftList,
+      page: () => const ShiftListPage(),
+      binding: ShiftListBindings(),
+    ),
   ];
 }
 
@@ -72,4 +79,5 @@ class RoutesName {
   static const String home = '/home';
   static const String createPersonnel = '/createPersonnel';
   static const String createShift = '/createShift';
+  static const String shiftList = '/shiftList';
 }

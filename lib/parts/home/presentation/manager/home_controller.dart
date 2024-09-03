@@ -16,6 +16,10 @@ class HomeController extends GetxController with StateMixin<HomeDataEntity> {
     Get.toNamed(RoutesName.createShift);
   }
 
+  openShiftListPage() {
+    Get.toNamed(RoutesName.shiftList);
+  }
+
   getHomeData() async {
     change(null, status: RxStatus.loading());
     getHomeDataUseCase.call().then((res) {
