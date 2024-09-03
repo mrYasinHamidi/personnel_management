@@ -1,5 +1,7 @@
-
 import 'package:dartz/dartz.dart';
+import 'package:personnel_management/common/entities/paginate_response_entity.dart';
+import 'package:personnel_management/common/models/paginate_response_model.dart';
+import 'package:personnel_management/common/params/pagination_param.dart';
 import 'package:personnel_management/core/error/error.dart';
 import 'package:personnel_management/parts/shift/data/data_sources/remote/shift_remote_data_source.dart';
 import 'package:personnel_management/parts/shift/data/models/shift_model.dart';
@@ -22,8 +24,24 @@ class ShiftRepositoryImpl extends ShiftRepository {
       if (response.statusCode != 200) {
         throw ServerException(response.message);
       }
-
-      return ShiftModel.fromJson(response.data).toEntity();
+      return ShiftModel.fromJson(response.data);
     });
+  }
+
+  @override
+  Future<Either<Failure, PaginateResponseEntity<ShiftEntity>>> getShiftList(PaginationParam param) {
+    return perform(
+      () async {
+        final response = await remoteDataSource.getShiftList(param);
+        if (response.statusCode != 200) {
+          throw ServerException(response.message);
+        }
+        final d = PaginateResponseModel.fromJson(
+          response.data,
+          (json) => ShiftModel.fromJson(json as Map<String, dynamic>),
+        );
+        return d;
+      },
+    );
   }
 }

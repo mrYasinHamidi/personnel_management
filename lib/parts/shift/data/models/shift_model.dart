@@ -4,41 +4,37 @@ import 'package:personnel_management/parts/shift/domain/entities/shift_entity.da
 part 'shift_model.g.dart';
 
 @JsonSerializable()
-class ShiftModel {
+class ShiftModel extends ShiftEntity {
   @JsonKey(name: '_id')
-  final String id;
+  final String _id;
 
   @JsonKey(name: 'name')
-  final String name;
+  final String _name;
 
   @JsonKey(name: 'startTime')
-  final String startTime;
+  final String _startTime;
 
   @JsonKey(name: 'endTime')
-  final String endTime;
+  final String _endTime;
 
   @JsonKey(name: 'floatTime')
-  final int? floatTime;
+  final int? _floatTime;
 
-  ShiftModel({
-    required this.id,
-    required this.name,
-    required this.startTime,
-    required this.endTime,
-    required this.floatTime,
-  });
+  const ShiftModel(
+    this._id,
+    this._name,
+    this._startTime,
+    this._endTime,
+    this._floatTime,
+  ) : super(
+          id: _id,
+          startTime: _startTime,
+          floatTime: _floatTime,
+          endTime: _endTime,
+          name: _name,
+        );
 
   factory ShiftModel.fromJson(Map<String, dynamic> json) => _$ShiftModelFromJson(json);
 
   Map<String, dynamic> toJson() => _$ShiftModelToJson(this);
-
-  ShiftEntity toEntity() {
-    return ShiftEntity(
-      id: id,
-      name: name,
-      startTime: startTime,
-      endTime: endTime,
-      floatTime: floatTime,
-    );
-  }
 }

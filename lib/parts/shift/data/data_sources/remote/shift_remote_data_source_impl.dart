@@ -1,3 +1,4 @@
+import 'package:personnel_management/common/params/pagination_param.dart';
 import 'package:personnel_management/common/response_model.dart';
 import 'package:personnel_management/parts/shift/data/data_sources/remote/shift_remote_data_source.dart';
 import 'package:personnel_management/parts/shift/domain/params/create_shift_param.dart';
@@ -12,6 +13,15 @@ class ShiftRemoteDataSourceImpl extends ShiftRemoteDataSource {
     final res = await request.post(
       ShiftEndpoints.createShift,
       data: param.toJson(),
+    );
+    return ResponseModel.fromJson(res.data);
+  }
+
+  @override
+  Future<ResponseModel> getShiftList(PaginationParam param) async {
+    final res = await request.get(
+      ShiftEndpoints.getShiftList,
+      queryParameters: param.toJson(),
     );
     return ResponseModel.fromJson(res.data);
   }
