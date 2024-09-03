@@ -31,8 +31,8 @@ class HomePage extends GetView<HomeController> {
                         child: Text('createPersonnel'.tr),
                       ),
                       ElevatedButton(
-                        onPressed: controller.openCreateShiftPage,
-                        child: Text('createShift'.tr),
+                        onPressed: controller.openCreateWorkPlacePage,
+                        child: Text('createWorkPlace'.tr),
                       ),
                       ElevatedButton(
                         onPressed: controller.openShiftListPage,

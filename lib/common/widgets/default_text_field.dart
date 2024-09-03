@@ -11,12 +11,14 @@ class DefaultTextField extends StatelessWidget {
   final TextEditingController? controller;
   final String? counterText;
   final Widget? suffixIcon;
-  final bool justNumbers;
+  final bool justInteger;
+  final bool justFloat;
 
   const DefaultTextField({
     super.key,
     this.label,
-    this.justNumbers = false,
+    this.justInteger = false,
+    this.justFloat = false,
     this.suffixIcon,
     this.controller,
     this.counterText,
@@ -37,9 +39,12 @@ class DefaultTextField extends StatelessWidget {
       ),
       controller: controller,
       enabled: enable,
-      inputFormatters: justNumbers ? [FilteringTextInputFormatter.digitsOnly] : null,
+      inputFormatters: <TextInputFormatter>[
+        if (justInteger) FilteringTextInputFormatter.digitsOnly,
+        if (justFloat) FilteringTextInputFormatter.allow(RegExp(r'(^\d*\.?\d*)'))
+      ],
       readOnly: readOnly,
-      keyboardType: inputType,
+      // keyboardType: inputType,
       validator: validator,
       onTap: onTap,
     );

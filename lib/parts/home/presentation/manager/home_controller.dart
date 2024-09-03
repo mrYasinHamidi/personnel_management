@@ -12,8 +12,8 @@ class HomeController extends GetxController with StateMixin<HomeDataEntity> {
     Get.toNamed(RoutesName.createPersonnel);
   }
 
-  openCreateShiftPage() {
-    Get.toNamed(RoutesName.createShift);
+  openCreateWorkPlacePage() {
+    Get.toNamed(RoutesName.createWorkPlace);
   }
 
   openShiftListPage() {

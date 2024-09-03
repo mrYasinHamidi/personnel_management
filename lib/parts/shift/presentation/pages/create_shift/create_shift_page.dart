@@ -45,7 +45,7 @@ class CreateShiftPage extends GetView<CreateShiftController> {
               DefaultTextField(
                 label: '${'floatTime'.tr} (${'minute'.tr})',
                 controller: controller.floatTimeController,
-                justNumbers: true,
+                justInteger: true,
                 suffixIcon: Tooltip(
                   message: 'floatTimeNotInfo'.tr,
                   child: const Icon(Icons.info_outline),
