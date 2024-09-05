@@ -24,7 +24,10 @@ class PaginateResponseModel<Model> {
     required this.data,
   });
 
-  factory PaginateResponseModel.fromJson(Map<String, dynamic> json, Model Function(Object? json) fromJsonT) =>
+  factory PaginateResponseModel.fromJson(
+    Map<String, dynamic> json,
+    Model Function(dynamic json) fromJsonT,
+  ) =>
       _$PaginateResponseModelFromJson<Model>(json, fromJsonT);
 
   Map<String, dynamic> toJson(Map<String, dynamic> Function(Model) toJsonT) =>

@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
+import 'package:personnel_management/common/entities/user_entity.dart';
 import 'package:personnel_management/common/tools/toast.dart';
 import 'package:personnel_management/common/widgets/default_date_picker.dart';
 import 'package:personnel_management/parts/user/domain/params/create_personnel_params.dart';
@@ -10,14 +11,16 @@ class CreatePersonnelController extends GetxController {
 
   final formKey = GlobalKey<FormState>();
 
-  final usernameController = TextEditingController();
-  final nameController = TextEditingController();
-  final passwordController = TextEditingController();
-  final passwordConfirmController = TextEditingController();
-  final personnelCodeController = TextEditingController();
-  final nationalCodeController = TextEditingController();
-  final startDateController = DefaultDatePickerController();
-  final endDateController = DefaultDatePickerController();
+  final PersonnelEntity? entity = Get.arguments is PersonnelEntity ? Get.arguments : null;
+
+  late final usernameController = TextEditingController(text: entity?.username);
+  late final nameController = TextEditingController(text: entity?.name);
+  late final passwordController = TextEditingController();
+  late final passwordConfirmController = TextEditingController();
+  late final personnelCodeController = TextEditingController(text: '${entity?.personnelCode ?? ''}');
+  late final nationalCodeController = TextEditingController(text: entity?.nationalCode);
+  late final startDateController = DefaultDatePickerController.fromDateTime(entity?.workStartDate);
+  late final endDateController = DefaultDatePickerController.fromDateTime(entity?.workEndDate);
 
   final loading = false.obs;
 
@@ -53,6 +56,4 @@ class CreatePersonnelController extends GetxController {
       loading.value = false;
     }
   }
-
 }
-

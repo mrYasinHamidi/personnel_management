@@ -27,8 +27,8 @@ class HomePage extends GetView<HomeController> {
                     children: [
                       Text(state.toString()),
                       ElevatedButton(
-                        onPressed: controller.openCreatePersonnelPage,
-                        child: Text('createPersonnel'.tr),
+                        onPressed: controller.openPersonnelList,
+                        child: Text('personnelList'.tr),
                       ),
                       ElevatedButton(
                         onPressed: controller.openWorkPlaceList,

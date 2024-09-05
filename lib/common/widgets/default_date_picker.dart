@@ -63,4 +63,8 @@ class _DefaultDatePickerState extends State<DefaultDatePicker> {
 
 class DefaultDatePickerController extends ValueNotifier<Jalali?> {
   DefaultDatePickerController({Jalali? date}) : super(date);
+
+  factory DefaultDatePickerController.fromDateTime(DateTime? dateTime) {
+    return DefaultDatePickerController(date: dateTime == null ? null : Jalali.fromDateTime(dateTime));
+  }
 }

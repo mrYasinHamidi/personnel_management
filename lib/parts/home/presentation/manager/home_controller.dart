@@ -8,8 +8,8 @@ class HomeController extends GetxController with StateMixin<HomeDataEntity> {
 
   HomeController(this.getHomeDataUseCase);
 
-  openCreatePersonnelPage() {
-    Get.toNamed(RoutesName.createPersonnel);
+  openPersonnelList() {
+    Get.toNamed(RoutesName.personnelList);
   }
 
   openWorkPlaceList() {

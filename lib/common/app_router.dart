@@ -17,6 +17,8 @@ import 'package:personnel_management/parts/shift/presentation/pages/shift_list/b
 import 'package:personnel_management/parts/shift/presentation/pages/shift_list/shift_list_page.dart';
 import 'package:personnel_management/parts/user/presentation/pages/create_personnel/bindings.dart';
 import 'package:personnel_management/parts/user/presentation/pages/create_personnel/create_personnel_page.dart';
+import 'package:personnel_management/parts/user/presentation/pages/personnel_list/bindings.dart';
+import 'package:personnel_management/parts/user/presentation/pages/personnel_list/personnel_list_page.dart';
 import 'package:personnel_management/parts/work_place/presentation/pages/create_work_place/bindings.dart';
 import 'package:personnel_management/parts/work_place/presentation/pages/create_work_place/create_work_place_page.dart';
 import 'package:personnel_management/parts/work_place/presentation/pages/work_place_list/bindings.dart';
@@ -81,6 +83,11 @@ class AppRouter {
       page: () => const WorkPlaceListPage(),
       binding: WorkPlaceListBindings(),
     ),
+    GetPage(
+      name: RoutesName.personnelList,
+      page: () => const PersonnelListPage(),
+      binding: PersonnelListBindings(),
+    ),
   ];
 }
 
@@ -96,4 +103,5 @@ class RoutesName {
   static const String shiftList = '/shiftList';
   static const String createWorkPlace = '/createWorkPlace';
   static const String workPlaceList = '/workPlaceList';
+  static const String personnelList = '/personnelList';
 }
