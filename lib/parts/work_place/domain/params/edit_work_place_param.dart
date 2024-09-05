@@ -1,10 +1,9 @@
 import 'package:json_annotation/json_annotation.dart';
-import 'package:personnel_management/parts/work_place/domain/entities/work_place_entity.dart';
 
-part 'work_place_model.g.dart';
+part 'edit_work_place_param.g.dart';
 
 @JsonSerializable()
-class WorkPlaceModel {
+class EditWorkPlaceParam {
   @JsonKey(name: '_id')
   final String id;
 
@@ -24,9 +23,9 @@ class WorkPlaceModel {
   final double latitude;
 
   @JsonKey(name: 'radius')
-  final int radius;
+  final int? radius;
 
-  const WorkPlaceModel({
+  const EditWorkPlaceParam({
     required this.id,
     required this.name,
     required this.city,
@@ -36,19 +35,7 @@ class WorkPlaceModel {
     required this.radius,
   });
 
-  factory WorkPlaceModel.fromJson(Map<String, dynamic> json) => _$WorkPlaceModelFromJson(json);
+  factory EditWorkPlaceParam.fromJson(Map<String, dynamic> json) => _$EditWorkPlaceParamFromJson(json);
 
-  Map<String, dynamic> toJson() => _$WorkPlaceModelToJson(this);
-
-  WorkPlaceEntity toEntity() {
-    return WorkPlaceEntity(
-      id: id,
-      name: name,
-      city: city,
-      address: address,
-      longitude: longitude,
-      latitude: latitude,
-      radius: radius,
-    );
-  }
+  Map<String, dynamic> toJson() => _$EditWorkPlaceParamToJson(this);
 }

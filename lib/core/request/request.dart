@@ -55,6 +55,18 @@ class Request {
         data: data,
       );
 
+  Future<Response> put(
+    String path, {
+    String? baseUrl,
+    Map<String, dynamic>? queryParameters,
+    data,
+  }) =>
+      _dio.put(
+        '${baseUrl ?? this.baseUrl()}$path',
+        queryParameters: queryParameters,
+        data: data,
+      );
+
   Future<Response> delete(
     String path, {
     String? baseUrl,

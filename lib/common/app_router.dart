@@ -19,6 +19,8 @@ import 'package:personnel_management/parts/user/presentation/pages/create_person
 import 'package:personnel_management/parts/user/presentation/pages/create_personnel/create_personnel_page.dart';
 import 'package:personnel_management/parts/work_place/presentation/pages/create_work_place/bindings.dart';
 import 'package:personnel_management/parts/work_place/presentation/pages/create_work_place/create_work_place_page.dart';
+import 'package:personnel_management/parts/work_place/presentation/pages/work_place_list/bindings.dart';
+import 'package:personnel_management/parts/work_place/presentation/pages/work_place_list/work_place_list_page.dart';
 
 class AppRouter {
   static const String initialRoute = RoutesName.splash;
@@ -74,6 +76,11 @@ class AppRouter {
       page: () => const CreateWorkPlacePage(),
       binding: CreateWorkPlaceBindings(),
     ),
+    GetPage(
+      name: RoutesName.workPlaceList,
+      page: () => const WorkPlaceListPage(),
+      binding: WorkPlaceListBindings(),
+    ),
   ];
 }
 
@@ -88,4 +95,5 @@ class RoutesName {
   static const String createShift = '/createShift';
   static const String shiftList = '/shiftList';
   static const String createWorkPlace = '/createWorkPlace';
+  static const String workPlaceList = '/workPlaceList';
 }

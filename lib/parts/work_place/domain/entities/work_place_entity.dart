@@ -4,6 +4,7 @@ class WorkPlaceEntity extends Equatable {
   final String id;
   final String name;
   final String city;
+  final String address;
   final double longitude;
   final double latitude;
   final int radius;
@@ -12,6 +13,7 @@ class WorkPlaceEntity extends Equatable {
     required this.id,
     required this.name,
     required this.city,
+    required this.address,
     required this.longitude,
     required this.latitude,
     required this.radius,

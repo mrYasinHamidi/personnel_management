@@ -1,21 +1,24 @@
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:personnel_management/common/tools/toast.dart';
+import 'package:personnel_management/parts/work_place/domain/entities/work_place_entity.dart';
 import 'package:personnel_management/parts/work_place/domain/params/create_work_place_param.dart';
-import 'package:personnel_management/parts/work_place/domain/usecases/work_place_usecase.dart';
+import 'package:personnel_management/parts/work_place/domain/usecases/create_work_place_usecase.dart';
 
 class CreateWorkPlaceController extends GetxController {
   final CreateWorkPlaceUseCase createWorkPlace;
 
   CreateWorkPlaceController({required this.createWorkPlace});
 
-  final formKey = GlobalKey<FormState>();
-  final nameController = TextEditingController();
-  final cityController = TextEditingController();
-  final addressController = TextEditingController();
-  final latController = TextEditingController();
-  final lonController = TextEditingController();
-  final radiusController = TextEditingController();
+  final WorkPlaceEntity? entity = Get.arguments is WorkPlaceEntity ? Get.arguments : null;
+
+  late final formKey = GlobalKey<FormState>();
+  late final nameController = TextEditingController(text: entity?.name);
+  late final cityController = TextEditingController(text: entity?.city);
+  late final addressController = TextEditingController(text: entity?.address);
+  late final latController = TextEditingController(text: '${entity?.latitude ?? ''}');
+  late final lonController = TextEditingController(text: '${entity?.longitude ?? ''}');
+  late final radiusController = TextEditingController(text: '${entity?.radius ?? ''}');
 
   submit() {
     try {
@@ -30,8 +33,8 @@ class CreateWorkPlaceController extends GetxController {
       );
       createWorkPlace.call(param).then((value) {
         value.fold(
-              (l) => Toast.showError(l.message),
-              (r) => Toast.showSuccessMessage(),
+          (l) => Toast.showError(l.message),
+          (r) => Toast.showSuccessMessage(),
         );
       });
     } catch (e) {}
