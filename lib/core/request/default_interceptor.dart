@@ -15,12 +15,6 @@ class DefaultInterceptor extends Interceptor {
 
   @override
   void onRequest(RequestOptions options, RequestInterceptorHandler handler) {
-    if (_refreshingToken) {
-      handler.reject(
-        DioException(requestOptions: options, message: 'serverError'),
-      );
-    }
-
     options.headers['authorization'] = 'Bearer ${findToken.call()}';
     super.onRequest(options, handler);
   }
@@ -34,7 +28,18 @@ class DefaultInterceptor extends Interceptor {
 
       _refreshingToken = false;
     }
-
     super.onResponse(response, handler);
+  }
+
+  @override
+  void onError(DioException err, ErrorInterceptorHandler handler) async {
+    if (err.response?.statusCode == 401 && !_refreshingToken) {
+      _refreshingToken = true;
+
+      await unAuthorizedHandler?.call();
+
+      _refreshingToken = false;
+    }
+    super.onError(err, handler);
   }
 }

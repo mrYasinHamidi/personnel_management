@@ -30,6 +30,7 @@ class AuthRemoteDataSourceImpl extends AuthRemoteDataSource {
     final res = await request.post(
       AuthEndpoints.refreshToken,
       data: {'refreshToken': refreshToken},
+      callIsolate: true,
     );
     return ResponseModel.fromJson(res.data);
   }

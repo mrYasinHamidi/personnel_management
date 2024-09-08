@@ -41,9 +41,9 @@ class AppBindings extends Bindings {
         final refreshToken = authRepo.getSavedToken().fold((l) => '', (r) => r.refreshToken);
         final res = await authRepo.refreshToken(refreshToken);
 
-        res.fold(
-          (l) => Setup.logout(),
-          (r) => authRepo.saveToken(r),
+        await res.fold(
+          (l) async => Setup.logout(),
+          (r) async => authRepo.saveToken(r),
         );
       });
   }

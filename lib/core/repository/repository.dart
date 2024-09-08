@@ -15,6 +15,8 @@ abstract class Repository {
       final res = await request();
       if (res.statusCode != 200) {
         throw ServerException(res.message);
+      } else if (res.statusCode == 401) {
+        throw UnauthorizedException();
       }
       final entity = parser(res.data);
       return Right(entity);

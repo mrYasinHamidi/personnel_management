@@ -37,8 +37,9 @@ class Request {
     String path, {
     String? baseUrl,
     Map<String, dynamic>? queryParameters,
+    bool callIsolate = false,
   }) =>
-      _dio.get(
+      (callIsolate ? Dio() : _dio).get(
         '${baseUrl ?? this.baseUrl()}$path',
         queryParameters: queryParameters,
       );
@@ -48,8 +49,9 @@ class Request {
     String? baseUrl,
     Map<String, dynamic>? queryParameters,
     data,
+    bool callIsolate = false,
   }) =>
-      _dio.post(
+      (callIsolate ? Dio() : _dio).post(
         '${baseUrl ?? this.baseUrl()}$path',
         queryParameters: queryParameters,
         data: data,
@@ -60,8 +62,9 @@ class Request {
     String? baseUrl,
     Map<String, dynamic>? queryParameters,
     data,
+    bool callIsolate = false,
   }) =>
-      _dio.put(
+      (callIsolate ? Dio() : _dio).put(
         '${baseUrl ?? this.baseUrl()}$path',
         queryParameters: queryParameters,
         data: data,
@@ -72,8 +75,9 @@ class Request {
     String? baseUrl,
     Map<String, dynamic>? queryParameters,
     data,
+    bool callIsolate = false,
   }) =>
-      _dio.delete(
+      (callIsolate ? Dio() : _dio).delete(
         '${baseUrl ?? this.baseUrl()}$path',
         queryParameters: queryParameters,
         data: data,
