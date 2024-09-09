@@ -6,6 +6,7 @@ import 'package:personnel_management/parts/shift/data/data_sources/remote/shift_
 import 'package:personnel_management/parts/shift/data/models/shift_model.dart';
 import 'package:personnel_management/parts/shift/domain/entities/shift_entity.dart';
 import 'package:personnel_management/parts/shift/domain/params/create_shift_param.dart';
+import 'package:personnel_management/parts/shift/domain/params/edit_shift_param.dart';
 import 'package:personnel_management/parts/shift/domain/params/get_shift_list_param.dart';
 import 'package:personnel_management/parts/shift/domain/repositories/shift_repository.dart';
 
@@ -44,5 +45,17 @@ class ShiftRepositoryImpl extends ShiftRepository {
         return paginationModel.toEntity((model) => model.toEntity());
       },
     );
+  }
+
+  @override
+  Future<Either<Failure, ShiftEntity>> editShift(EditShiftParam param) {
+    return perform(() async {
+      final response = await remoteDataSource.editShift(param);
+
+      if (response.statusCode != 200) {
+        throw ServerException(response.message);
+      }
+      return ShiftModel.fromJson(response.data).toEntity();
+    });
   }
 }

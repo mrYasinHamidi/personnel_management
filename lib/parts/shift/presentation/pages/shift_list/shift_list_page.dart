@@ -13,7 +13,7 @@ class ShiftListPage extends GetView<ShiftListController> {
         title: Text('shiftList'.tr),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: controller.openCreateShiftPage,
+        onPressed: controller.createShift,
         child: const Icon(Icons.add),
       ),
       body: DefaultPagedListView(
@@ -23,6 +23,7 @@ class ShiftListPage extends GetView<ShiftListController> {
             title: Text(entry.name),
             subtitle: Text('${entry.startTime} => ${entry.endTime}'),
             trailing: Text(entry.floatTime?.toString() ?? ''),
+            onTap: () => controller.editShift(entry),
           );
         },
       ),

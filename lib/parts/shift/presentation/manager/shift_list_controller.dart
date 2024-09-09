@@ -8,17 +8,21 @@ import 'package:personnel_management/parts/shift/domain/params/get_shift_list_pa
 import 'package:personnel_management/parts/shift/domain/usecases/get_shift_list_usecase.dart';
 
 class ShiftListController extends GetxController {
-  final GetShiftListUseCase createShift;
+  final GetShiftListUseCase getShiftList;
 
-  ShiftListController({required this.createShift});
+  ShiftListController({required this.getShiftList});
 
   late final loadController = CustomPagingController<ShiftEntity>(
     onPageRequest: _getShifts,
     pageCount: Constants.paginationSize,
   );
 
-  openCreateShiftPage() {
+  createShift() {
     Get.toNamed(RoutesName.createShift);
+  }
+
+  editShift(ShiftEntity entity) {
+    Get.toNamed(RoutesName.createShift, arguments: entity);
   }
 
   _getShifts(int page) {
@@ -27,7 +31,7 @@ class ShiftListController extends GetxController {
         page: page,
         limit: loadController.pageCount,
       );
-      createShift.call(param).then(
+      getShiftList.call(param).then(
         (value) {
           value.fold(
             (l) => loadController.error = l.message,

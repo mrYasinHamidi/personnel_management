@@ -10,6 +10,6 @@ class ShiftListBindings extends Bindings {
     Get.put(ShiftRemoteDataSourceImpl(request: Get.find()));
     Get.put(ShiftRepositoryImpl(remoteDataSource: Get.find<ShiftRemoteDataSourceImpl>()));
     Get.put(GetShiftListUseCase(repository: Get.find<ShiftRepositoryImpl>()));
-    Get.put(ShiftListController(createShift: Get.find()));
+    Get.put(ShiftListController(getShiftList: Get.find()));
   }
 }

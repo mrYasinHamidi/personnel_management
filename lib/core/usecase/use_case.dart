@@ -6,6 +6,7 @@ import '../error/error.dart';
 
 abstract class BaseUseCase<Type> {
   const BaseUseCase();
+
 }
 
 abstract class UseCase<Type, Params> extends BaseUseCase<Type> {
