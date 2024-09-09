@@ -23,7 +23,8 @@ class PersonnelListPage extends GetView<PersonnelListController> {
             onTap: () => controller.editPersonnel(entry),
             title: Text('${'name'.tr} : ${entry.name}'),
             subtitle: Text('${'username'.tr} : ${entry.username}'),
-            leading: Row(
+            trailing: Row(
+              mainAxisSize: MainAxisSize.min,
               children: [
                 IconButton(
                   onPressed: () => controller.editPersonnel(entry),
