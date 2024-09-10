@@ -10,6 +10,12 @@ class CreatePersonnelBindings extends Bindings {
     Get.put(UserRemoteDataSourceImpl(request: Get.find()));
     Get.put(UserRepositoryImpl(Get.find<UserRemoteDataSourceImpl>()));
     Get.put(CreatePersonnelUseCase(Get.find<UserRepositoryImpl>()));
-    Get.put(CreatePersonnelController(createPersonnelUseCase: Get.find()));
+    Get.put(
+      CreatePersonnelController(
+        createPersonnelUseCase: Get.find(),
+        deletePersonnelUseCase: Get.find(),
+        editPersonnelUseCase: Get.find(),
+      ),
+    );
   }
 }

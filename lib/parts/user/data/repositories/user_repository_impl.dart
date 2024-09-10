@@ -32,14 +32,14 @@ class UserRepositoryImpl extends UserRepository {
   }
 
   @override
-  Future<Either<Failure, PersonnelEntity>> deletePersonnelList(String id) => perform1(
-        request: () => remoteDataSource.deletePersonnelList(id),
+  Future<Either<Failure, PersonnelEntity>> deletePersonnel(String id) => perform1(
+        request: () => remoteDataSource.deletePersonnel(id),
         parser: (json) => PersonnelModel.fromJson(json).toEntity(),
       );
 
   @override
-  Future<Either<Failure, PersonnelEntity>> editPersonnelList(EditPersonnelParams params) => perform1(
-        request: () => remoteDataSource.editPersonnelList(params),
+  Future<Either<Failure, PersonnelEntity>> editPersonnel(EditPersonnelParams params) => perform1(
+        request: () => remoteDataSource.editPersonnel(params),
         parser: (json) => PersonnelModel.fromJson(json).toEntity(),
       );
 }

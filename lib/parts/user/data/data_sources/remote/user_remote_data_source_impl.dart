@@ -26,12 +26,12 @@ class UserRemoteDataSourceImpl extends UserRemoteDataSource {
       );
 
   @override
-  Future<ResponseModel> deletePersonnelList(String id) => perform(
+  Future<ResponseModel> deletePersonnel(String id) => perform(
         () => request.delete('$personnel/$id'),
       );
 
   @override
-  Future<ResponseModel> editPersonnelList(EditPersonnelParams params) => perform(
+  Future<ResponseModel> editPersonnel(EditPersonnelParams params) => perform(
         () => request.put(
           personnel,
           data: params.toJson(),

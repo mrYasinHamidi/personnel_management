@@ -11,7 +11,7 @@ abstract class UserRemoteDataSource extends RemoteDataSource {
 
   Future<ResponseModel> getPersonnelList(GetPersonnelListParam params);
 
-  Future<ResponseModel> editPersonnelList(EditPersonnelParams params);
+  Future<ResponseModel> editPersonnel(EditPersonnelParams params);
 
-  Future<ResponseModel> deletePersonnelList(String id);
+  Future<ResponseModel> deletePersonnel(String id);
 }

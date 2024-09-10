@@ -4,8 +4,10 @@ part 'edit_personnel_params.g.dart';
 
 @JsonSerializable()
 class EditPersonnelParams {
+
   @JsonKey(name: '_id')
   final String id;
+
   @JsonKey(name: 'username')
   final String username;
 

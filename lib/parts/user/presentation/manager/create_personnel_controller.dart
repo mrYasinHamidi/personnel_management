@@ -4,10 +4,15 @@ import 'package:personnel_management/common/entities/user_entity.dart';
 import 'package:personnel_management/common/tools/toast.dart';
 import 'package:personnel_management/common/widgets/default_date_picker.dart';
 import 'package:personnel_management/parts/user/domain/params/create_personnel_params.dart';
+import 'package:personnel_management/parts/user/domain/params/edit_personnel_params.dart';
 import 'package:personnel_management/parts/user/domain/use_cases/create_personnel_usecase.dart';
+import 'package:personnel_management/parts/user/domain/use_cases/delete_personnel_usecase.dart';
+import 'package:personnel_management/parts/user/domain/use_cases/edit_personnel_usecase.dart';
 
 class CreatePersonnelController extends GetxController {
   final CreatePersonnelUseCase createPersonnelUseCase;
+  final EditPersonnelUseCase editPersonnelUseCase;
+  final DeletePersonnelUseCase deletePersonnelUseCase;
 
   final formKey = GlobalKey<FormState>();
 
@@ -24,7 +29,11 @@ class CreatePersonnelController extends GetxController {
 
   final loading = false.obs;
 
-  CreatePersonnelController({required this.createPersonnelUseCase});
+  CreatePersonnelController({
+    required this.createPersonnelUseCase,
+    required this.deletePersonnelUseCase,
+    required this.editPersonnelUseCase,
+  });
 
   submit() {
     try {
@@ -32,18 +41,58 @@ class CreatePersonnelController extends GetxController {
 
       loading.value = true;
 
-      final param = CreatePersonnelParams(
-        username: usernameController.text.trim(),
-        name: nameController.text.trim(),
-        password: passwordController.text.trim(),
-        passwordConfirm: passwordConfirmController.text.trim(),
-        nationalCode: nationalCodeController.text.trim(),
-        personnelCode: int.parse(personnelCodeController.text.trim()),
-        workStartDate: startDateController.value!.toDateTime(),
-        workEndDate: endDateController.value!.toDateTime(),
-      );
+      if (entity == null) {
+        final param = CreatePersonnelParams(
+          username: usernameController.text.trim(),
+          name: nameController.text.trim(),
+          password: passwordController.text.trim(),
+          passwordConfirm: passwordConfirmController.text.trim(),
+          nationalCode: nationalCodeController.text.trim(),
+          personnelCode: int.parse(personnelCodeController.text.trim()),
+          workStartDate: startDateController.value!.toDateTime(),
+          workEndDate: endDateController.value!.toDateTime(),
+        );
 
-      createPersonnelUseCase.call(param).then(
+        createPersonnelUseCase.call(param).then(
+          (value) {
+            value.fold(
+              (l) => Toast.showError(l.message),
+              (r) => Toast.showSuccessMessage(),
+            );
+            loading.value = false;
+          },
+        );
+      } else {
+        final param = EditPersonnelParams(
+          id: entity!.id,
+          username: usernameController.text.trim(),
+          name: nameController.text.trim(),
+          password: passwordController.text.trim(),
+          passwordConfirm: passwordConfirmController.text.trim(),
+          nationalCode: nationalCodeController.text.trim(),
+          personnelCode: int.parse(personnelCodeController.text.trim()),
+          workStartDate: startDateController.value!.toDateTime(),
+          workEndDate: endDateController.value!.toDateTime(),
+        );
+
+        editPersonnelUseCase.call(param).then(
+          (value) {
+            value.fold(
+              (l) => Toast.showError(l.message),
+              (r) => Toast.showSuccessMessage(),
+            );
+            loading.value = false;
+          },
+        );
+      }
+    } catch (e) {
+      loading.value = false;
+    }
+  }
+
+  delete() {
+    try {
+      deletePersonnelUseCase.call(entity!.id).then(
         (value) {
           value.fold(
             (l) => Toast.showError(l.message),
@@ -52,8 +101,6 @@ class CreatePersonnelController extends GetxController {
           loading.value = false;
         },
       );
-    } catch (e) {
-      loading.value = false;
-    }
+    } catch (e) {}
   }
 }

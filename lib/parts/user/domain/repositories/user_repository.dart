@@ -17,7 +17,7 @@ abstract class UserRepository extends Repository {
 
   Future<Either<Failure, PaginateResponseEntity<PersonnelEntity>>> getPersonnelList(GetPersonnelListParam params);
 
-  Future<Either<Failure, PersonnelEntity>> editPersonnelList(EditPersonnelParams params);
+  Future<Either<Failure, PersonnelEntity>> editPersonnel(EditPersonnelParams params);
 
-  Future<Either<Failure, PersonnelEntity>> deletePersonnelList(String id);
+  Future<Either<Failure, PersonnelEntity>> deletePersonnel(String id);
 }
