@@ -14,5 +14,7 @@ abstract class WorkPlaceRepository extends Repository {
 
   Future<Either<Failure, WorkPlaceEntity>> editWorkPlace(EditWorkPlaceParam param);
 
+  Future<Either<Failure, WorkPlaceEntity>> deleteWorkPlace(String param);
+
   Future<Either<Failure, PaginateResponseEntity<WorkPlaceEntity>>> getWorkPlaceList(GetWorkPlaceListParam param);
 }

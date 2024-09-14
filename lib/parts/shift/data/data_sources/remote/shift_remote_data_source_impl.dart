@@ -12,7 +12,7 @@ class ShiftRemoteDataSourceImpl extends ShiftRemoteDataSource {
   @override
   Future<ResponseModel> createShift(CreateShiftParam param) => perform(
         () => request.post(
-          ShiftEndpoints.createShift,
+          ShiftEndpoints.shift,
           data: param.toJson(),
         ),
       );
@@ -20,7 +20,7 @@ class ShiftRemoteDataSourceImpl extends ShiftRemoteDataSource {
   @override
   Future<ResponseModel> getShiftList(GetShiftListParam param) => perform(
         () => request.get(
-          ShiftEndpoints.getShiftList,
+          ShiftEndpoints.shift,
           queryParameters: param.toJson(),
         ),
       );
@@ -28,8 +28,15 @@ class ShiftRemoteDataSourceImpl extends ShiftRemoteDataSource {
   @override
   Future<ResponseModel> editShift(EditShiftParam param) => perform(
         () => request.put(
-          ShiftEndpoints.createShift,
+          '${ShiftEndpoints.shift}/${param.id}',
           data: param.toJson(),
+        ),
+      );
+
+  @override
+  Future<ResponseModel> deleteShift(String id) => perform(
+        () => request.delete(
+          '${ShiftEndpoints.shift}/$id',
         ),
       );
 }

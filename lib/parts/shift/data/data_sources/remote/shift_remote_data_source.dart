@@ -11,5 +11,7 @@ abstract class ShiftRemoteDataSource extends RemoteDataSource {
 
   Future<ResponseModel> editShift(EditShiftParam param);
 
+  Future<ResponseModel> deleteShift(String id);
+
   Future<ResponseModel> getShiftList(GetShiftListParam param);
 }

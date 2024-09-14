@@ -60,4 +60,10 @@ class WorkPlaceRepositoryImpl extends WorkPlaceRepository {
       },
     );
   }
+
+  @override
+  Future<Either<Failure, WorkPlaceEntity>> deleteWorkPlace(String param) => perform1(
+        request: () => remoteDataSource.deleteWorkPlace(param),
+        parser: (json) => WorkPlaceModel.fromJson(json).toEntity(),
+      );
 }

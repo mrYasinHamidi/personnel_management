@@ -11,5 +11,7 @@ abstract class WorkPlaceRemoteDataSource extends RemoteDataSource {
 
   Future<ResponseModel> editWorkPlace(EditWorkPlaceParam param);
 
+  Future<ResponseModel> deleteWorkPlace(String param);
+
   Future<ResponseModel> getWorkPlaceList(GetWorkPlaceListParam param);
 }

@@ -14,5 +14,7 @@ abstract class ShiftRepository extends Repository {
 
   Future<Either<Failure, ShiftEntity>> editShift(EditShiftParam param);
 
+  Future<Either<Failure, ShiftEntity>> deleteShift(String id);
+
   Future<Either<Failure, PaginateResponseEntity<ShiftEntity>>> getShiftList(GetShiftListParam param);
 }

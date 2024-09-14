@@ -35,4 +35,11 @@ class WorkPlaceRemoteDataSourceImpl extends WorkPlaceRemoteDataSource {
     );
     return ResponseModel.fromJson(res.data);
   }
+
+  @override
+  Future<ResponseModel> deleteWorkPlace(String param) => perform(
+        () => request.delete(
+          '${WorkPlaceEndpoints.workPlace}/$param',
+        ),
+      );
 }

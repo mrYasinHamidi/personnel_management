@@ -58,4 +58,10 @@ class ShiftRepositoryImpl extends ShiftRepository {
       return ShiftModel.fromJson(response.data).toEntity();
     });
   }
+
+  @override
+  Future<Either<Failure, ShiftEntity>> deleteShift(String id) => perform1(
+        request: () => remoteDataSource.deleteShift(id),
+        parser: (json) => ShiftModel.fromJson(json).toEntity(),
+      );
 }
