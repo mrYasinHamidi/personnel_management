@@ -17,7 +17,7 @@ class DefaultPagedListView<T> extends StatelessWidget {
   final String? noItemMessage;
 
   const DefaultPagedListView({
-    Key? key,
+    super.key,
     required this.loadController,
     required this.itemBuilder,
     this.scrollController,
@@ -28,7 +28,7 @@ class DefaultPagedListView<T> extends StatelessWidget {
     this.pullToRefresh = false,
     this.padding = EdgeInsets.zero,
     this.noItemMessage,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

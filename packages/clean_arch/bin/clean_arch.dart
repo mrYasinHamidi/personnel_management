@@ -1,28 +1,59 @@
 import 'dart:io';
 
-void main() {
-  // Get feature name from user input
-  stdout.write('Enter the feature name: ');
-  String? featureName = stdin.readLineSync()?.trim();
-  if (featureName == null || featureName.isEmpty) {
-    print('Feature name is required. Exiting.');
-    return;
+String? entityName;
+Map<String, String> entityProperties = {};
+String featureName = '';
+bool getRoute = false;
+bool deleteRoute = false;
+bool updateRoute = false;
+bool createRoute = false;
+
+void main(List<String> args) {
+  if (args.isEmpty) return;
+  featureName = args.first;
+
+  String? route = args.last;
+
+  stdout.write('Enter the entity name (for skip press \'s\') :');
+  String? entity = stdin.readLineSync()?.trim();
+  if (entity?.toLowerCase() != 's') {
+    entityName = entity;
   }
 
-  // Get route from user input
-  stdout.write('Enter the route where the feature should be created (e.g., lib/features): ');
-  String? route = stdin.readLineSync()?.trim();
-
-  if (route == null || route.isEmpty) {
-    print('Route is required. Exiting.');
-    return;
+  if (entityName != null) {
+    bool readingProperties = true;
+    while (readingProperties) {
+      stdout.write('Enter the properties of $entityName Entity (if you finished press \'f\')');
+      String? property = stdin.readLineSync()?.trim();
+      if (property == null || property.isEmpty) continue;
+      if (property.toLowerCase() == 'f') {
+        readingProperties = false;
+        continue;
+      }
+      final parts = property.split(' ');
+      if (parts.length != 2) {
+        stdout.write('Wrong input!!! (Ex:String name && List<int> numbers)');
+        continue;
+      }
+      entityProperties[parts.first] = parts.last;
+    }
   }
 
-  String projectName = Directory.current.path.split('/').last;
+  if (entityName != null) {
+    bool readingCrud = true;
+    while (readingCrud) {
+      stdout.write('Which CRUD operation you need ? (C for Create , R for Read , U for Update , D for Delete)');
+      String? crud = stdin.readLineSync()?.trim();
+      if (crud == null || crud.isEmpty) continue;
+      if (!RegExp(r'^[CRUD]+$').hasMatch(crud)) continue;
+      if (crud.contains('C')) createRoute = true;
+      if (crud.contains('R')) getRoute = true;
+      if (crud.contains('U')) updateRoute = true;
+      if (crud.contains('D')) deleteRoute = true;
+      readingCrud = false;
+    }
+  }
 
-  String featureName1 = snakeToUpperCamelCase(featureName, projectName);
-
-  // Define the directories to create for the feature
   final List<String> directories = [
     '$route/$featureName/data/data_sources',
     '$route/$featureName/data/data_sources/remote',
@@ -37,37 +68,27 @@ void main() {
     '$route/$featureName/presentation/widgets',
   ];
 
-  // Define the files to create with some basic content for the feature
   final Map<String, String> files = {
-    '$route/$featureName/data/data_sources/remote/${featureName}_endpoints.dart':
-        _sampleEndpointsFileContent(featureName1, projectName),
+    '$route/$featureName/data/data_sources/remote/${featureName}_endpoints.dart': _sampleEndpointsFileContent(),
     '$route/$featureName/data/data_sources/remote/${featureName}_remote_data_source.dart':
-        _sampleRemoteDataSourceFileContent(featureName1, projectName),
+        _sampleRemoteDataSourceFileContent(),
     '$route/$featureName/data/data_sources/remote/${featureName}_remote_data_source_impl.dart':
-        _sampleRemoteDataSourceImplFileContent(featureName1, projectName),
-    '$route/$featureName/data/repositories/${featureName}_repository_impl.dart':
-        _sampleRepositoryImplFileContent(featureName1, projectName),
-    '$route/$featureName/domain/repositories/${featureName}_repository.dart':
-        _sampleRepositoryFileContent(featureName1, projectName),
-    '$route/$featureName/domain/entities/${featureName}_entity.dart':
-        _sampleEntityFileContent(featureName1, projectName),
-    '$route/$featureName/data/models/${featureName}_model.dart': _sampleModelFileContent(featureName1, projectName),
-    '$route/$featureName/domain/params/${featureName}_param.dart': _sampleParamFileContent(featureName1, projectName),
-    '$route/$featureName/domain/usecases/${featureName}_usecase.dart':
-        _sampleUsecaseFileContent(featureName1, projectName),
-    '$route/$featureName/presentation/pages/${featureName}_page.dart':
-        _samplePageFileContent(featureName1, projectName),
-    '$route/$featureName/domain/presentation/manager/${featureName}_controller.dart':
-        _sampleControllerFileContent(featureName1, projectName),
+        _sampleRemoteDataSourceImplFileContent(),
+    '$route/$featureName/data/repositories/${featureName}_repository_impl.dart': _sampleRepositoryImplFileContent(),
+    '$route/$featureName/domain/repositories/${featureName}_repository.dart': _sampleRepositoryFileContent(),
+    '$route/$featureName/domain/entities/${featureName}_entity.dart': _sampleEntityFileContent(),
+    '$route/$featureName/data/models/${featureName}_model.dart': _sampleModelFileContent(),
+    '$route/$featureName/domain/params/${featureName}_param.dart': _sampleParamFileContent(),
+    '$route/$featureName/domain/usecases/${featureName}_usecase.dart': _sampleUsecaseFileContent(),
+    '$route/$featureName/presentation/pages/${featureName}_page.dart': _samplePageFileContent(),
+    '$route/$featureName/domain/presentation/manager/${featureName}_controller.dart': _sampleControllerFileContent(),
   };
 
-  // Create directories
   for (final dir in directories) {
     Directory(dir).createSync(recursive: true);
     print('Created directory: $dir');
   }
 
-  // Create files with content
   files.forEach((path, content) {
     final file = File(path);
     file.writeAsStringSync(content);
@@ -77,7 +98,7 @@ void main() {
   print('Feature "$featureName" directories and base files created successfully.');
 }
 
-String _sampleUsecaseFileContent(String featureName, String projectName) {
+String _sampleUsecaseFileContent() {
   return '''
 
 class ${featureName}UseCase extends UseCase<${featureName}Entity, ${featureName}Param> {
@@ -92,7 +113,7 @@ class ${featureName}UseCase extends UseCase<${featureName}Entity, ${featureName}
 ''';
 }
 
-String _sampleControllerFileContent(String featureName, String projectName) {
+String _sampleControllerFileContent() {
   return '''
 import 'package:get/get.dart';
 
@@ -102,7 +123,7 @@ class ${featureName}Controller extends GetxController {}
 ''';
 }
 
-String _samplePageFileContent(String featureName, String projectName) {
+String _samplePageFileContent() {
   return '''
 
 class ${featureName}Page extends GetView<${featureName}Controller> {
@@ -131,7 +152,7 @@ String snakeToUpperCamelCase(String snakeCaseString, String projectName) {
   return words.join('');
 }
 
-String _sampleParamFileContent(String featureName, String projectName) {
+String _sampleParamFileContent() {
   return '''
 part '$featureName.g.dart';
 
@@ -153,7 +174,7 @@ class ${featureName}Param {
 ''';
 }
 
-String _sampleRemoteDataSourceFileContent(String featureName, String projectName) {
+String _sampleRemoteDataSourceFileContent() {
   return '''
 
 abstract class ${featureName}RemoteDataSource extends RemoteDataSource {
@@ -164,7 +185,7 @@ abstract class ${featureName}RemoteDataSource extends RemoteDataSource {
 ''';
 }
 
-String _sampleEndpointsFileContent(String featureName, String projectName) {
+String _sampleEndpointsFileContent() {
   return '''
 part of '${featureName}_remote_data_source_impl.dart';
 class ${featureName}Endpoints {
@@ -174,7 +195,7 @@ class ${featureName}Endpoints {
 ''';
 }
 
-String _sampleModelFileContent(String featureName, String projectName) {
+String _sampleModelFileContent() {
   return '''
 part '${featureName}_model.g.dart';
 
@@ -203,14 +224,14 @@ class ${featureName}Model {
 ''';
 }
 
-String _sampleEntityFileContent(String featureName, String projectName) {
+String _sampleEntityFileContent() {
   return '''
 
-class ${featureName}Entity extends Equatable {
+class ${entityName}Entity extends Equatable {
   
-  final String sampleField;
+  ${[for (var i in entityProperties.keys) 'final ${entityProperties[i]} $i;']}
 
-  const ${featureName}Entity({
+  const ${entityName}Entity({
     required this.sampleField,
   });
 
@@ -223,7 +244,7 @@ class ${featureName}Entity extends Equatable {
 ''';
 }
 
-String _sampleRemoteDataSourceImplFileContent(String featureName, String projectName) {
+String _sampleRemoteDataSourceImplFileContent() {
   return '''
 part '${featureName}_endpoints.dart';
 
@@ -243,7 +264,7 @@ class ${featureName}RemoteDataSourceImpl extends ${featureName}RemoteDataSource 
 ''';
 }
 
-String _sampleRepositoryFileContent(String featureName, String projectName) {
+String _sampleRepositoryFileContent() {
   return '''
 
 abstract class ${featureName}Repository extends Repository {
@@ -254,7 +275,7 @@ abstract class ${featureName}Repository extends Repository {
 ''';
 }
 
-String _sampleRepositoryImplFileContent(String featureName, String projectName) {
+String _sampleRepositoryImplFileContent() {
   return '''
 
 class ${featureName}RepositoryImpl extends ${featureName}Repository {

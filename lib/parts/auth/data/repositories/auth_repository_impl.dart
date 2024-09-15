@@ -25,43 +25,26 @@ class AuthRepositoryImpl extends AuthRepository {
   }
 
   @override
-  Future<Either<Failure, TokenEntity>> login(LoginParam param) async {
-    return perform(() async {
-      final response = await remoteDataSource.login(param);
-
-      if (response.statusCode != 200) {
-        throw ServerException(response.message);
-      }
-
-      return TokenModel.fromJson(response.data).toEntity();
-    });
-  }
+  Future<Either<Failure, TokenEntity>> login(LoginParam param) => perform(
+        () => remoteDataSource.login(param).then(
+              (value) => TokenModel.fromJson(value.data).toEntity(),
+            ),
+      );
 
   @override
-  Future<Either<Failure, TokenEntity>> refreshToken(String refreshToken) {
-    return perform(() async {
-      final response = await remoteDataSource.refreshToken(refreshToken);
-      if (response.statusCode != 200) {
-        throw ServerException(response.message);
-      }
-      return TokenModel.fromJson(response.data).toEntity();
-    });
-  }
+  Future<Either<Failure, TokenEntity>> refreshToken(String refreshToken) => perform(
+        () => remoteDataSource.refreshToken(refreshToken).then(
+              (value) => TokenModel.fromJson(value.data).toEntity(),
+            ),
+      );
 
   @override
-  Future<Either<Failure, void>> register(SignupParam param) {
-    return perform(() async {
-      final response = await remoteDataSource.register(param);
-      if (response.statusCode != 200) {
-        throw ServerException(response.message);
-      }
-    });
-  }
+  Future<Either<Failure, void>> register(SignupParam param) => perform(() => remoteDataSource.register(param));
 
   @override
-  Future<Either<Failure, void>> saveToken(TokenEntity token) {
-    return perform(() async {
-      await localDataSource.saveToken(TokenModel.fromEntity(token));
-    });
-  }
+  Future<Either<Failure, void>> saveToken(TokenEntity token) => perform(
+        () => localDataSource.saveToken(
+          TokenModel.fromEntity(token),
+        ),
+      );
 }

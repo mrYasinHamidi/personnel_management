@@ -9,20 +9,20 @@ import 'package:personnel_management/parts/auth/presentation/pages/signup/signup
 import 'package:personnel_management/parts/auth/presentation/pages/signup/signup_page.dart';
 import 'package:personnel_management/parts/auth/presentation/pages/splash/splash_bindings.dart';
 import 'package:personnel_management/parts/auth/presentation/pages/splash/splash_page.dart';
-import 'package:personnel_management/parts/home/presentation/pages/showcase/home_bindings.dart';
-import 'package:personnel_management/parts/home/presentation/pages/showcase/home_page.dart';
-import 'package:personnel_management/parts/shift/presentation/pages/create_shift/bindings.dart';
-import 'package:personnel_management/parts/shift/presentation/pages/create_shift/create_shift_page.dart';
-import 'package:personnel_management/parts/shift/presentation/pages/shift_list/bindings.dart';
-import 'package:personnel_management/parts/shift/presentation/pages/shift_list/shift_list_page.dart';
-import 'package:personnel_management/parts/user/presentation/pages/create_personnel/bindings.dart';
-import 'package:personnel_management/parts/user/presentation/pages/create_personnel/create_personnel_page.dart';
-import 'package:personnel_management/parts/user/presentation/pages/personnel_list/bindings.dart';
-import 'package:personnel_management/parts/user/presentation/pages/personnel_list/personnel_list_page.dart';
-import 'package:personnel_management/parts/work_place/presentation/pages/create_work_place/bindings.dart';
-import 'package:personnel_management/parts/work_place/presentation/pages/create_work_place/create_work_place_page.dart';
-import 'package:personnel_management/parts/work_place/presentation/pages/work_place_list/bindings.dart';
-import 'package:personnel_management/parts/work_place/presentation/pages/work_place_list/work_place_list_page.dart';
+import 'package:personnel_management/parts/manager/home/presentation/pages/showcase/home_bindings.dart';
+import 'package:personnel_management/parts/manager/home/presentation/pages/showcase/home_page.dart';
+import 'package:personnel_management/parts/manager/shift/presentation/pages/create_shift/bindings.dart';
+import 'package:personnel_management/parts/manager/shift/presentation/pages/create_shift/create_shift_page.dart';
+import 'package:personnel_management/parts/manager/shift/presentation/pages/shift_list/bindings.dart';
+import 'package:personnel_management/parts/manager/shift/presentation/pages/shift_list/shift_list_page.dart';
+import 'package:personnel_management/parts/manager/user/presentation/pages/create_personnel/bindings.dart';
+import 'package:personnel_management/parts/manager/user/presentation/pages/create_personnel/create_personnel_page.dart';
+import 'package:personnel_management/parts/manager/user/presentation/pages/personnel_list/bindings.dart';
+import 'package:personnel_management/parts/manager/user/presentation/pages/personnel_list/personnel_list_page.dart';
+import 'package:personnel_management/parts/manager/work_place/presentation/pages/create_work_place/bindings.dart';
+import 'package:personnel_management/parts/manager/work_place/presentation/pages/create_work_place/create_work_place_page.dart';
+import 'package:personnel_management/parts/manager/work_place/presentation/pages/work_place_list/bindings.dart';
+import 'package:personnel_management/parts/manager/work_place/presentation/pages/work_place_list/work_place_list_page.dart';
 
 class AppRouter {
   static const String initialRoute = RoutesName.splash;
