@@ -5,7 +5,6 @@ import 'package:personnel_management/common/entities/paginate_response_entity.da
 import 'package:personnel_management/core/error/error.dart';
 import 'package:personnel_management/core/usecase/use_case.dart';
 import 'package:personnel_management/parts/work_place/domain/entities/work_place_entity.dart';
-import 'package:personnel_management/parts/work_place/domain/params/edit_work_place_param.dart';
 import 'package:personnel_management/parts/work_place/domain/params/get_work_place_list_param.dart';
 import 'package:personnel_management/parts/work_place/domain/repositories/work_place_repository.dart';
 

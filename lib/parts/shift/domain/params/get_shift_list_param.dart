@@ -1,7 +1,4 @@
-import 'package:flutter/material.dart';
 import 'package:json_annotation/json_annotation.dart';
-import 'package:personnel_management/common/constants.dart';
-import 'package:personnel_management/core/converters/time_converter.dart';
 
 part 'get_shift_list_param.g.dart';
 

@@ -1,5 +1,4 @@
 import 'package:equatable/equatable.dart';
-import 'package:personnel_management/common/enums/user_role.dart';
 
 sealed class UserEntity extends Equatable {
   final String id;

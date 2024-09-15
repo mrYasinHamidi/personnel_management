@@ -133,7 +133,7 @@ String snakeToUpperCamelCase(String snakeCaseString, String projectName) {
 
 String _sampleParamFileContent(String featureName, String projectName) {
   return '''
-part '${featureName}.g.dart';
+part '$featureName.g.dart';
 
 @JsonSerializable()
 class ${featureName}Param {

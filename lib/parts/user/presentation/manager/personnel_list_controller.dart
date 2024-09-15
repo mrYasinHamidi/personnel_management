@@ -3,10 +3,6 @@ import 'package:personnel_management/common/app_router.dart';
 import 'package:personnel_management/common/constants.dart';
 import 'package:personnel_management/common/entities/user_entity.dart';
 import 'package:personnel_management/common/tools/custom_page_load_controller.dart';
-import 'package:personnel_management/common/tools/toast.dart';
-import 'package:personnel_management/parts/shift/domain/entities/shift_entity.dart';
-import 'package:personnel_management/parts/shift/domain/params/get_shift_list_param.dart';
-import 'package:personnel_management/parts/shift/domain/usecases/get_shift_list_usecase.dart';
 import 'package:personnel_management/parts/user/domain/params/get_personnel_list_param.dart';
 import 'package:personnel_management/parts/user/domain/use_cases/get_personnel_list_usecase.dart';
 

@@ -1,7 +1,6 @@
 import 'package:equatable/equatable.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:personnel_management/common/entities/user_entity.dart';
-import 'package:personnel_management/common/enums/user_role.dart';
 
 part 'user_model.g.dart';
 
