@@ -226,20 +226,18 @@ class ${featureName}Model {
 
 String _sampleEntityFileContent() {
   return '''
-
 class ${entityName}Entity extends Equatable {
   
-  ${[for (var i in entityProperties.keys) 'final ${entityProperties[i]} $i;']}
+  ${entityProperties.keys.map((i) => 'final ${entityProperties[i]} $i;').join('\n')}
 
   const ${entityName}Entity({
-    required this.sampleField,
+    ${entityProperties.keys.map((i) => 'required this.$i,').join('\n')}
   });
 
   @override
   List<Object?> get props => [
-        sampleField,
-      ];
-  
+    ${entityProperties.keys.join(',\n')}
+  ];
 }
 ''';
 }
